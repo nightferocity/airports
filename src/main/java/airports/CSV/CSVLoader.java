@@ -16,7 +16,7 @@ public class CSVLoader {
 
         ArrayList<Airport> filteredAirport = new ArrayList<>();
         try (FileReader fileReader = new FileReader(new ClassPathResource("airports.dat").getFile());
-             BufferedReader bufferedReader = new BufferedReader(fileReader);) {
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
             CSVReader reader = new CSVReader(bufferedReader);
             ArrayList<Airport> airports = reader.read();
@@ -61,7 +61,7 @@ public class CSVLoader {
                             filteredAirport.add(airport);
                         break;
                     case DST:
-                        if (airport.getDST() == filter.toCharArray()[0])
+                        if (airport.getDST().equals(filter))
                             filteredAirport.add(airport);
                         break;
                     case TZ_DATABASE_TIME_ZONE:
@@ -78,7 +78,7 @@ public class CSVLoader {
                         break;
                 }
             }
-            filteredAirport.sort(new Comparator<Airport>() {
+            filteredAirport.sort(new Comparator<>() {
                 @Override
                 public int compare(Airport o1, Airport o2) {
                     switch (position) {

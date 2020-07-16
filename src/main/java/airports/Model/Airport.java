@@ -14,7 +14,7 @@ public class Airport {
     private Double aLong;
     private Double alt;
     private Double timezone;
-    private char DST;
+    private String DST;
     private String tzDatabase;
     private String type;
     private String source;
@@ -24,6 +24,7 @@ public class Airport {
     }
 
     public void setId(String id) {
+
         this.id = id;
     }
 
@@ -32,7 +33,10 @@ public class Airport {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if(name.equals("\\N"))
+            this.name = "no information";
+        else
+            this.name = name;
     }
 
     public String getCity() {
@@ -40,7 +44,10 @@ public class Airport {
     }
 
     public void setCity(String city) {
-        this.city = city;
+        if(city.equals("\\N"))
+            this.city = "no information";
+        else
+            this.city = city;
     }
 
     public String getCountry() {
@@ -48,7 +55,10 @@ public class Airport {
     }
 
     public void setCountry(String country) {
-        this.country = country;
+        if(country.equals("\\N"))
+            this.country = "no information";
+        else
+            this.country = country;
     }
 
     public String getIATA() {
@@ -56,7 +66,10 @@ public class Airport {
     }
 
     public void setIATA(String IATA) {
-        this.IATA = IATA;
+        if(IATA.equals("\\N"))
+            this.IATA = "no information";
+        else
+            this.IATA = IATA;
     }
 
     public String getICAO() {
@@ -64,47 +77,73 @@ public class Airport {
     }
 
     public void setICAO(String ICAO) {
-        this.ICAO = ICAO;
+        if(ICAO.equals("\\N"))
+            this.ICAO = "no information";
+        else
+            this.ICAO = ICAO;
     }
 
     public Double getLat() {
         return lat;
     }
 
-    public void setLat(Double lat) {
-        this.lat = lat;
+    public void setLat(String lat) {
+        try{
+            this.lat = Double.parseDouble(lat);
+        }
+        catch(NumberFormatException e){
+            this.timezone = Double.NaN;
+        }
     }
 
     public Double getLong() {
         return aLong;
     }
 
-    public void setLong(Double aLong) {
-        this.aLong = aLong;
+    public void setLong(String aLong) {
+        try{
+            this.aLong = Double.parseDouble(aLong);
+        }
+        catch(NumberFormatException e){
+            this.timezone = Double.NaN;
+        }
     }
 
     public Double getAlt() {
         return alt;
     }
 
-    public void setAlt(Double alt) {
-        this.alt = alt;
+    public void setAlt(String alt) {
+        try{
+            this.alt = Double.parseDouble(alt);
+        }
+        catch(NumberFormatException e){
+            this.timezone = Double.NaN;
+        }
     }
 
     public Double getTimezone() {
         return timezone;
     }
 
-    public void setTimezone(Double timezone) {
-        this.timezone = timezone;
+    public void setTimezone(String timezone) {
+        try{
+            this.timezone = Double.parseDouble(timezone);
+        }
+        catch(NumberFormatException e){
+            this.timezone = Double.NaN;
+        }
     }
 
-    public char getDST() {
+    public String getDST() {
         return DST;
     }
 
-    public void setDST(char DST) {
-        this.DST = DST;
+    public void setDST(String DST) {
+        if(DST.equals("\\N"))
+            this.DST = "no information";
+        else
+            this.DST = DST;
     }
 
     public String getTzDatabase() {
@@ -112,7 +151,10 @@ public class Airport {
     }
 
     public void setTzDatabase(String tzDatabase) {
-        this.tzDatabase = tzDatabase;
+        if(tzDatabase.equals("\\N"))
+            this.tzDatabase = "no information";
+        else
+            this.tzDatabase = tzDatabase;
     }
 
     public String getType() {
@@ -120,7 +162,10 @@ public class Airport {
     }
 
     public void setType(String type) {
-        this.type = type;
+        if(type.equals("\\N"))
+            this.type = "no information";
+        else
+            this.type = type;
     }
 
     public String getSource() {
@@ -128,6 +173,9 @@ public class Airport {
     }
 
     public void setSource(String source) {
-        this.source = source;
+        if(source.equals("\\N"))
+            this.source = "no information";
+        else
+            this.source = source;
     }
 }

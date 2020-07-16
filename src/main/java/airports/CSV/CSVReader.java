@@ -5,6 +5,7 @@ import airports.Model.Airport;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Pattern;
 
 class CSVReader {
 
@@ -26,7 +27,8 @@ class CSVReader {
     }
 
     private Airport parseLine(String line) {
-        String[] tokens = line.split(",");
+        Pattern ptn = Pattern.compile(",(?! )");
+        String[] tokens = ptn.split(line, -1);
         Airport airport = new Airport();
         airport.setId(tokens[0]);
         airport.setName(tokens[1]);
@@ -34,11 +36,11 @@ class CSVReader {
         airport.setCountry(tokens[3]);
         airport.setIATA(tokens[4]);
         airport.setICAO(tokens[5]);
-        airport.setLat(Double.parseDouble(tokens[6]));
-        airport.setLong(Double.parseDouble(tokens[7]));
-        airport.setAlt(Double.parseDouble(tokens[8]));
-        airport.setTimezone(Double.parseDouble(tokens[9]));
-        airport.setDST(tokens[10].charAt(0));
+        airport.setLat(tokens[6]);
+        airport.setLong(tokens[7]);
+        airport.setAlt(tokens[8]);
+        airport.setTimezone(tokens[9]);
+        airport.setDST(tokens[10]);
         airport.setTzDatabase(tokens[11]);
         airport.setType(tokens[12]);
         airport.setSource(tokens[13]);

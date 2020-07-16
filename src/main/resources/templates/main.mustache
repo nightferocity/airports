@@ -2,34 +2,62 @@
 <html lang="en">
 <head>
     <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 <p>some</p>
-{{#airports}}
-    <label>
-        <select>
-            <option>Name</option>
-            <option>City</option>
-            <option>Country</option>
-            <option>IATA</option>
-            <option>ICAO</option>
-            <option>Lat</option>
-            <option>Long</option>
-            <option>Alt</option>
-            <option>Timezone</option>
-            <option>DST</option>
-            <option>Tz database time zone</option>
-            <option>Type</option>
-            <option>Source</option>
-        </select>
-        {{Name}}
-        {{City}}
-        {{Country}}
-        {{IATA}}
-        {{ICAO}}
-        {{Lat}}
-    </label>
-{{/airports}}
+<form action="/" method="post">
+    <select name="column">
+        <option value="">Name</option>
+        <option>City</option>
+        <option>Country</option>
+        <option>IATA</option>
+        <option>ICAO</option>
+        <option>Lat</option>
+        <option>Long</option>
+        <option>Alt</option>
+        <option>Timezone</option>
+        <option>DST</option>
+        <option>Tz database time zone</option>
+        <option>Type</option>
+        <option>Source</option>
+    </select>
+    <input type="text" name="filter" value="Abu">
+    <input type="submit">
+</form>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>IATA</th>
+        <th>ICAO</th>
+        <th>Lat</th>
+        <th>Long</th>
+        <th>Alt</th>
+        <th>Timezone</th>
+        <th>DST</th>
+        <th>Tz Database timezone</th>
+        <th>Type</th>
+        <th>Source</th>
+    </tr>
+    {{#airports}}
+        <tr>
+            <td>{{Name}}</td>
+            <td>{{City}}</td>
+            <td>{{Country}}</td>
+            <td>{{IATA}}</td>
+            <td>{{ICAO}}</td>
+            <td>{{Lat}}</td>
+            <td>{{Long}}</td>
+            <td>{{Alt}}</td>
+            <td>{{Timezone}}</td>
+            <td>{{DST}}</td>
+            <td>{{TzDatabase}}</td>
+            <td>{{Type}}</td>
+            <td>{{Source}}</td>
+        </tr>
+    {{/airports}}
+</table>
 </body>
 </html>
