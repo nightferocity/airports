@@ -22,9 +22,9 @@ public class MainController {
     }
 
     @PostMapping("/")
-    public String search(@RequestParam String column, @RequestParam String filter, Map<String, Object> model) throws IOException {
+    public String search(@RequestParam int column, @RequestParam String filter, Map<String, Object> model) throws IOException {
         CSVLoader csv = new CSVLoader();
-        ArrayList<Airport> airports = csv.Find(Columns.CITY, filter);
+        ArrayList<Airport> airports = csv.Find(Columns.values()[column], filter);
         model.put("airports", airports);
         return "main";
     }

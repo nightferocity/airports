@@ -1,32 +1,38 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Airport info</title>
+<!--    <link rel="stylesheet" type="text/css" href="style.css">-->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p>some</p>
+<H2>Поиск информации о аэропорте</H2>
 <form action="/" method="post">
-    <select name="column">
-        <option value="">Name</option>
-        <option>City</option>
-        <option>Country</option>
-        <option>IATA</option>
-        <option>ICAO</option>
-        <option>Lat</option>
-        <option>Long</option>
-        <option>Alt</option>
-        <option>Timezone</option>
-        <option>DST</option>
-        <option>Tz database time zone</option>
-        <option>Type</option>
-        <option>Source</option>
-    </select>
-    <input type="text" name="filter" value="Abu">
+    <label>
+        <H3>Поиск по:</H3>
+        <select name="column" id = "columnSelector">
+            <option value="0">Id</option>
+            <option value="1">Name</option>
+            <option value="2">City</option>
+            <option value="3">Country</option>
+            <option value="4">IATA</option>
+            <option value="5">ICAO</option>
+            <option value="6">Lat</option>
+            <option value="7">Long</option>
+            <option value="8">Alt</option>
+            <option value="9">Timezone</option>
+            <option value="10">DST</option>
+            <option value="11">Tz database time zone</option>
+            <option value="12">Type</option>
+            <option value="13">Source</option>
+        </select>
+    </label>
+    <input type="text" name="filter" placeholder="Поиск">
     <input type="submit">
 </form>
 <table>
     <tr>
+        <th >Id</th>
         <th>Name</th>
         <th>City</th>
         <th>Country</th>
@@ -43,6 +49,7 @@
     </tr>
     {{#airports}}
         <tr>
+            <td>{{Id}}</td>
             <td>{{Name}}</td>
             <td>{{City}}</td>
             <td>{{Country}}</td>

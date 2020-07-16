@@ -2,6 +2,7 @@ package airports.Enums;
 
 public enum Columns {
 
+    ID,
     NAME,
     CITY,
     COUNTRY,

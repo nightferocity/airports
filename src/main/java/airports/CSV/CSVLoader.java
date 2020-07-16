@@ -21,9 +21,12 @@ public class CSVLoader {
             CSVReader reader = new CSVReader(bufferedReader);
             ArrayList<Airport> airports = reader.read();
 
-
             for (Airport airport : airports) {
                 switch (position) {
+                    case ID:
+                        if (airport.getId().contains(filter))
+                            filteredAirport.add(airport);
+                        break;
                     case NAME:
                         if (airport.getName().contains(filter))
                             filteredAirport.add(airport);
@@ -82,6 +85,8 @@ public class CSVLoader {
                 @Override
                 public int compare(Airport o1, Airport o2) {
                     switch (position) {
+                        case ID:
+                            return Integer.parseInt(o1.getId()) - Integer.parseInt(o2.getId());
                         case NAME:
                             return o1.getName().compareTo(o2.getName());
                         case CITY:
